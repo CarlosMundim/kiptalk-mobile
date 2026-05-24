@@ -39,9 +39,11 @@
       "typedRoutes": true
     },
     "extra": {
+      "router": {},
       "eas": {
-        "projectId": "kiptalk"
+        "projectId": "924d821c-80cf-48c1-b4ab-c67fa3da6ced"
       }
-    }
+    },
+    "owner": "carlos_mundim"
   }
 }

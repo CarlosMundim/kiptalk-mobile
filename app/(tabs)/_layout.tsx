@@ -51,6 +51,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="jpto"
+        options={{
+          title: 'JP→',
+          headerTitle: '🗣️ 日本語→他言語',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="language" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="method"
         options={{
           title: 'Method',

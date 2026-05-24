@@ -458,6 +458,202 @@ export const METHODOLOGY_PRINCIPLES: MethodologyPrinciple[] = [
   },
 ];
 
+// ─── Japanese → Other Languages (for Japanese residents helping foreigners) ───
+
+export interface ReverseCourse {
+  name_ja: string;
+  name_en: string;
+  icon: string;
+  target_lang: string;
+  target_flag: string;
+  description: string;
+  categories: {
+    name: string;
+    name_ja: string;
+    vocabulary: {
+      jp: string;
+      target: string;
+      romaji?: string;
+      note?: string;
+    }[];
+  }[];
+}
+
+export const JP_TO_ENGLISH: ReverseCourse = {
+  name_ja: '日本語→英語',
+  name_en: 'Japanese → English',
+  icon: '🇬🇧',
+  target_lang: 'English',
+  target_flag: '🇬🇧',
+  description:
+    'For Japanese municipal workers, careworkers, and residents who want to communicate with the growing foreign community. Learn the phrases that actually help — giving directions, explaining procedures, small emergencies.',
+  categories: [
+    {
+      name: 'Greetings & Small Talk',
+      name_ja: 'あいさつ・雑談',
+      vocabulary: [
+        { jp: 'こんにちは', target: 'Hello / Good afternoon', note: 'Most versatile greeting' },
+        { jp: 'おはようございます', target: 'Good morning', note: 'Before ~10am' },
+        { jp: 'どちらから来ましたか？', target: 'Where are you from?', note: 'Good icebreaker' },
+        { jp: '日本の生活はどうですか？', target: 'How is life in Japan?', note: 'Shows you care' },
+        { jp: '何かお手伝いしましょうか？', target: 'Can I help you with anything?' },
+        { jp: 'ゆっくり話しますね', target: 'I\'ll speak slowly' },
+        { jp: 'わかりましたか？', target: 'Do you understand?' },
+        { jp: '大丈夫ですか？', target: 'Are you OK? / Is everything alright?' },
+      ],
+    },
+    {
+      name: 'City Hall / Ward Office',
+      name_ja: '区役所・市役所で',
+      vocabulary: [
+        { jp: '住民票が必要です', target: 'You need a residence certificate (jūminhyō)' },
+        { jp: 'この書類に記入してください', target: 'Please fill out this form' },
+        { jp: 'パスポートを見せてください', target: 'Please show me your passport' },
+        { jp: '在留カードはありますか？', target: 'Do you have your residence card?' },
+        { jp: '14日以内に手続きしてください', target: 'Please complete this within 14 days' },
+        { jp: '保険に入っていますか？', target: 'Do you have health insurance?' },
+        { jp: 'こちらが保険証です', target: 'Here is your insurance card' },
+        { jp: '税金について説明します', target: 'Let me explain about taxes' },
+      ],
+    },
+    {
+      name: 'Giving Directions',
+      name_ja: '道案内',
+      vocabulary: [
+        { jp: 'まっすぐ行ってください', target: 'Go straight' },
+        { jp: '次の信号を右に曲がって', target: 'Turn right at the next traffic light' },
+        { jp: '左側にあります', target: 'It\'s on the left side' },
+        { jp: '駅から歩いて5分です', target: 'It\'s 5 minutes walk from the station' },
+        { jp: 'ここです', target: 'It\'s here (pointing on map)' },
+        { jp: '何番のバスですか？', target: 'Which bus number?' },
+        { jp: '終点まで乗ってください', target: 'Ride to the last stop' },
+      ],
+    },
+    {
+      name: 'Medical / Emergency',
+      name_ja: '医療・緊急',
+      vocabulary: [
+        { jp: '救急車を呼びます', target: 'I\'ll call an ambulance' },
+        { jp: 'どこが痛いですか？', target: 'Where does it hurt?' },
+        { jp: '熱を測りましょう', target: 'Let\'s check your temperature' },
+        { jp: 'アレルギーはありますか？', target: 'Do you have any allergies?' },
+        { jp: '薬を飲んでいますか？', target: 'Are you taking any medication?' },
+        { jp: '安静にしてください', target: 'Please rest' },
+        { jp: '保険証を見せてください', target: 'Please show your insurance card' },
+        { jp: '火事です！逃げてください！', target: 'Fire! Please evacuate!', note: '🚨 Emergency' },
+        { jp: '地震です！机の下に入って！', target: 'Earthquake! Get under a desk!', note: '🫨 Emergency' },
+      ],
+    },
+  ],
+};
+
+export const JP_TO_CHINESE: ReverseCourse = {
+  name_ja: '日本語→中国語',
+  name_en: 'Japanese → Chinese',
+  icon: '🇨🇳',
+  target_lang: 'Chinese (Mandarin)',
+  target_flag: '🇨🇳',
+  description:
+    'For communicating with Chinese residents and tourists — the largest foreign group in Japan.',
+  categories: [
+    {
+      name: 'Greetings & Basics',
+      name_ja: '基本あいさつ',
+      vocabulary: [
+        { jp: 'こんにちは', target: '你好 (Nǐ hǎo)' },
+        { jp: 'ありがとう', target: '谢谢 (Xièxiè)' },
+        { jp: 'すみません', target: '对不起 (Duìbuqǐ)' },
+        { jp: '大丈夫ですか？', target: '你没事吧？(Nǐ méishì ba?)' },
+        { jp: 'わかりました', target: '我明白了 (Wǒ míngbái le)' },
+        { jp: 'ゆっくり話してください', target: '请说慢一点 (Qǐng shuō màn yīdiǎn)' },
+      ],
+    },
+    {
+      name: 'Shopping & Payment',
+      name_ja: '買い物・支払い',
+      vocabulary: [
+        { jp: '袋はいりますか？', target: '要袋子吗？(Yào dàizi ma?)' },
+        { jp: '現金ですかカードですか？', target: '现金还是卡？(Xiànjīn háishì kǎ?)' },
+        { jp: '免税ですか？', target: '免税吗？(Miǎnshuì ma?)' },
+        { jp: 'レシートいりますか？', target: '要收据吗？(Yào shōujù ma?)' },
+      ],
+    },
+  ],
+};
+
+export const JP_TO_KOREAN: ReverseCourse = {
+  name_ja: '日本語→韓国語',
+  name_en: 'Japanese → Korean',
+  icon: '🇰🇷',
+  target_lang: 'Korean',
+  target_flag: '🇰🇷',
+  description:
+    'For communicating with Korean residents — the third-largest foreign community in Japan.',
+  categories: [
+    {
+      name: 'Greetings & Basics',
+      name_ja: '基本あいさつ',
+      vocabulary: [
+        { jp: 'こんにちは', target: '안녕하세요 (Annyeonghaseyo)' },
+        { jp: 'ありがとう', target: '감사합니다 (Gamsahamnida)' },
+        { jp: 'すみません', target: '죄송합니다 (Joesonghamnida)' },
+        { jp: '大丈夫ですか？', target: '괜찮으세요? (Gwaenchaneuseyo?)' },
+        { jp: 'わかりました', target: '알겠습니다 (Algesseumnida)' },
+        { jp: 'ゆっくり話してください', target: '천천히 말씀해 주세요 (Cheoncheonhi malsseumhae juseyo)' },
+      ],
+    },
+    {
+      name: 'Helping Visitors',
+      name_ja: '案内・手伝い',
+      vocabulary: [
+        { jp: 'ここです', target: '여기예요 (Yeogiyeyo)' },
+        { jp: '何かお探しですか？', target: '뭐 찾으세요? (Mwo chajeuseyo?)' },
+        { jp: 'お手伝いしましょうか？', target: '도와드릴까요? (Dowadeurilkkayo?)' },
+        { jp: '道に迷いましたか？', target: '길을 잃으셨어요? (Gireul ireusyeosseoyo?)' },
+      ],
+    },
+  ],
+};
+
+export const JP_TO_PORTUGUESE: ReverseCourse = {
+  name_ja: '日本語→ポルトガル語',
+  name_en: 'Japanese → Portuguese',
+  icon: '🇧🇷',
+  target_lang: 'Portuguese',
+  target_flag: '🇧🇷',
+  description:
+    'For communicating with the large Brazilian community — especially in Aichi, Shizuoka, and Gunma.',
+  categories: [
+    {
+      name: 'Greetings & Basics',
+      name_ja: '基本あいさつ',
+      vocabulary: [
+        { jp: 'こんにちは', target: 'Olá / Bom dia' },
+        { jp: 'ありがとう', target: 'Obrigado(a)' },
+        { jp: 'すみません', target: 'Com licença / Desculpe' },
+        { jp: '大丈夫ですか？', target: 'Você está bem?' },
+        { jp: 'わかりました', target: 'Entendi' },
+        { jp: 'ゆっくり話してください', target: 'Fale devagar, por favor' },
+      ],
+    },
+    {
+      name: 'Work & Documents',
+      name_ja: '仕事・書類',
+      vocabulary: [
+        { jp: '書類にサインしてください', target: 'Assine o documento, por favor' },
+        { jp: 'パスポートありますか？', target: 'Você tem passaporte?' },
+        { jp: 'ここに名前を書いてください', target: 'Escreva seu nome aqui' },
+        { jp: '仕事は何ですか？', target: 'Qual é o seu trabalho?' },
+        { jp: '給料日は25日です', target: 'O dia de pagamento é dia 25' },
+      ],
+    },
+  ],
+};
+
+export function getAllReverseCourses(): ReverseCourse[] {
+  return [JP_TO_ENGLISH, JP_TO_CHINESE, JP_TO_KOREAN, JP_TO_PORTUGUESE];
+}
+
 // ─── Export helpers ───
 
 export function getDailyLifeVocabulary() {
