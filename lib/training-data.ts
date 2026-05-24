@@ -879,7 +879,212 @@ export const MEDICAL_CLERK_MANUAL: TrainingManual = {
   ],
 };
 
-// ─── New Industries: Konbini, Hotels, Clinics, Retail, Logistics ───
+// ─── Nurses & Healthcare Staff Course (EPA-aligned) ───
+
+export const NURSE_COURSE: IndustryCourse = {
+  name_ja: '看護師・医療スタッフ',
+  name_en: 'Nurses & Healthcare Staff Japanese',
+  name_pt: 'Japonês para Enfermeiros',
+  description: 'Aligned with Japan\'s EPA (Economic Partnership Agreement) nurse candidate training program. Covers the nursing Japanese needed for the national exam, patient communication, and daily clinical work.',
+  icon: '💉',
+  categories: [
+    {
+      name: 'Patient Assessment & Vital Signs',
+      vocabulary: [
+        { jp: '血圧を測ります', romaji: 'ketsuatsu o hakarimasu', en: 'I\'ll check your blood pressure' },
+        { jp: '体温を測りましょう', romaji: 'taion o hakarimashō', en: 'Let\'s check your temperature' },
+        { jp: '脈を取ります', romaji: 'myaku o torimasu', en: 'I\'ll take your pulse', note: 'Part of vital signs routine' },
+        { jp: '痛いところはありますか', romaji: 'itai tokoro wa arimasu ka', en: 'Do you have any pain?' },
+        { jp: '指で示してください', romaji: 'yubi de shimeshite kudasai', en: 'Please point with your finger' },
+        { jp: '痛みは1から10でいくつですか', romaji: 'itami wa ichi kara jū de ikutsu desu ka', en: 'On a scale of 1–10, how much pain?' },
+      ],
+    },
+    {
+      name: 'Medication & Treatment',
+      vocabulary: [
+        { jp: 'お薬の時間です', romaji: 'okusuri no jikan desu', en: 'It\'s time for your medicine' },
+        { jp: '注射します', romaji: 'chūsha shimasu', en: 'I\'ll give you an injection' },
+        { jp: '点滴を始めます', romaji: 'tenteki o hajimemasu', en: 'I\'ll start the IV drip' },
+        { jp: '副作用はありませんか', romaji: 'fukusayō wa arimasen ka', en: 'Any side effects?' },
+        { jp: '薬の名前を確認します', romaji: 'kusuri no namae o kakunin shimasu', en: 'I\'ll confirm the medication name' },
+        { jp: '食前・食後', romaji: 'shokuzen / shokugo', en: 'Before meals / After meals' },
+      ],
+    },
+    {
+      name: 'Daily Care & Assistance',
+      vocabulary: [
+        { jp: '起き上がれますか', romaji: 'okiagaremasu ka', en: 'Can you sit up?' },
+        { jp: 'お手洗いは大丈夫ですか', romaji: 'otearai wa daijōbu desu ka', en: 'Is the bathroom OK? / Do you need help?' },
+        { jp: '食事の介助をします', romaji: 'shokuji no kaijo o shimasu', en: 'I\'ll help you with your meal' },
+        { jp: '体を拭きましょう', romaji: 'karada o fukimashō', en: 'Let\'s wipe your body (bed bath)' },
+        { jp: 'シーツを交換します', romaji: 'shītsu o kōkan shimasu', en: 'I\'ll change the sheets' },
+        { jp: 'ナースコールを押してください', romaji: 'nāsu kōru o oshite kudasai', en: 'Please press the nurse call button' },
+      ],
+    },
+    {
+      name: 'EPA Exam & Nursing Terminology',
+      vocabulary: [
+        { jp: '看護師国家試験', romaji: 'kangoshi kokka shiken', en: 'National Nursing Exam', note: 'EPA candidates must pass this' },
+        { jp: '与薬', romaji: 'yoyaku', en: 'Medication administration' },
+        { jp: '感染予防', romaji: 'kansen yobō', en: 'Infection prevention' },
+        { jp: '褥瘡', romaji: 'jokuso', en: 'Pressure ulcer / Bedsore' },
+        { jp: '誤嚥', romaji: 'goen', en: 'Aspiration (choking risk)' },
+        { jp: '看護計画', romaji: 'kango keikaku', en: 'Nursing care plan' },
+        { jp: '申し送り', romaji: 'mōshiokuri', en: 'Shift handover report' },
+      ],
+    },
+  ],
+};
+
+// ─── Medical Clerk Extended: Easy Japanese & Government Resources ───
+
+export const MEDICAL_CLERK_EXTENDED: TrainingManual = {
+  title_ja: '医療事務・看護スタッフのための政府公式リソース活用ガイド',
+  title_en: 'Medical Clerk & Nurse Government Resource Guide',
+  subtitle: 'All free Japanese government training materials — in one place',
+  icon: '📋',
+  chapters: [
+    {
+      title_ja: '第8章: やさしい日本語 — 外国人患者とのコミュニケーション',
+      title_en: 'Chapter 8: Easy Japanese for Patient Communication',
+      sections: [
+        {
+          heading: 'What is "Easy Japanese" (やさしい日本語)?',
+          content: 'A simplified form of Japanese designed for communication with non-native speakers. Developed by researchers after the 1995 Kobe earthquake, now adopted nationwide by the Immigration Services Agency, Tokyo Metropolitan Government, and hospitals. Key rules: use short sentences, avoid katakana loanwords, add furigana, speak slowly and clearly.',
+          type: 'info',
+        },
+        {
+          heading: 'Rule 1: Short Sentences',
+          content: 'Instead of: こちらの書類に必要事項をご記入の上、受付までお持ちください。Say: この紙に書いてください。それから受付に来てください。Break complex instructions into one step per sentence.',
+          type: 'do',
+        },
+        {
+          heading: 'Rule 2: Avoid Katakana English',
+          content: 'Instead of コンセンサス, say みんなの意見. Instead of アセスメント, say 確認. Instead of デフォルト, say 普通の設定. Medical katakana (カテーテル, バイタル, ルート確保) are OK only if the patient knows them.',
+          type: 'do',
+        },
+        {
+          heading: 'Rule 3: Add Furigana & Visuals',
+          content: 'Write 血圧 (けつあつ) not just 血圧. Point to body parts. Draw simple diagrams. Show medication packages. The Immigration Bureau (出入国在留管理庁) publishes free illustrated guides at moj.go.jp/isa/support/portal.',
+          type: 'checklist',
+        },
+        {
+          heading: 'Practice: Japanese → Easy Japanese',
+          content: '「診察の前に問診票にご記入いただき、受付にご提出ください」→ 「この紙に書いてください。(point) ここに出してください。」「本日はどうなさいましたか」→ 「今日はどうしましたか。どこが悪いですか。」',
+          type: 'phrase',
+        },
+        {
+          heading: 'Tokyo Gov Easy Japanese Training',
+          content: 'Source: 東京都保健医療局 (Tokyo Metropolitan Government). Annual free 90-minute online training with foreign simulated patients + group work. Topics: Easy Japanese lecture, mock patient interaction, feedback session. Website: hokeniryo.metro.tokyo.lg.jp — search やさしい日本語研修.',
+          type: 'info',
+        },
+      ],
+    },
+    {
+      title_ja: '第9章: EPA制度 — 外国人看護師・介護福祉士候補者の受入れ',
+      title_en: 'Chapter 9: EPA System — Foreign Nurse & Care Worker Acceptance',
+      sections: [
+        {
+          heading: 'What is EPA?',
+          content: 'Economic Partnership Agreement. Japan accepts nurse and care worker candidates from Indonesia, Philippines, and Vietnam. Candidates study Japanese for 6 months (Japan Foundation pre-arrival) + 6 months (post-arrival), then work at hospitals/facilities while studying for the national exam. Max 3 attempts within 3-4 years.',
+          type: 'info',
+        },
+        {
+          heading: 'EPA Training Program Structure',
+          content: 'Pre-arrival (6 months): Japan Foundation intensive Japanese course in home country. Post-arrival (6 months): Japanese language + nursing/care knowledge at accepting facility. Working period (3-4 years): On-the-job training + exam preparation. Support: JICWELS (International Health and Welfare Corporation) provides learning materials, mock exams, and counseling.',
+          type: 'info',
+        },
+        {
+          heading: 'Key Organizations',
+          content: 'JICWELS (国際厚生事業団): Main coordinator for EPA acceptance. jicwels.or.jp — free learning materials. Japan Foundation (国際交流基金): Pre-arrival Japanese education. jpf.go.jp. MHLW (厚生労働省): Sets policy, provides guidebooks. mhlw.go.jp.',
+          type: 'checklist',
+        },
+        {
+          heading: 'Gap: What KipTalk Adds',
+          content: 'EPA training is high-quality but: 1) Only for Indonesia/Philippines/Vietnam nationals 2) Requires institutional sponsorship 3) Limited capacity (hundreds/year, not thousands). KipTalk serves ALL foreign workers regardless of nationality or visa type — self-study, free, mobile.',
+          type: 'info',
+        },
+      ],
+    },
+    {
+      title_ja: '第10章: 政府・自治体の無料リソース一覧',
+      title_en: 'Chapter 10: Free Government & Municipality Resources',
+      sections: [
+        {
+          heading: 'All Free Official Resources',
+          content: 'These are real, government-created materials your workers can use alongside KipTalk:',
+          type: 'checklist',
+        },
+        {
+          heading: '出入国在留管理庁 (Immigration Bureau)',
+          content: '「やさしい日本語研修教材例」— Free Easy Japanese training textbook + 2 workbooks (writing + speaking). Complete curriculum with 11 themes. Download: moj.go.jp/isa/support/portal/plainjapanese_kensyu.html. Also: 「生活・就労ガイドブック」— Life & Work Guidebook in 14 languages.',
+          type: 'info',
+        },
+        {
+          heading: '厚生労働省 MHLW',
+          content: '「外国人介護人材を雇用したい・共に働くためのガイドブック」— Guidebook for hiring and working with foreign care workers. Free PDF. 「技能講習補助教材」— Skills training supplements (forklift, crane, welding) in easy Japanese with vocabulary lists. mhlw.go.jp.',
+          type: 'info',
+        },
+        {
+          heading: '滋賀県 (Shiga Prefecture)',
+          content: '「外国人介護人材に対する研修の手引き」— Complete training manual for foreign care workers with curriculum, time schedules, and implementation guides. Used as model by other prefectures. Free PDF: pref.shiga.lg.jp.',
+          type: 'info',
+        },
+        {
+          heading: '東京都保健医療局 (Tokyo Metro Gov)',
+          content: '「医療機関における外国人患者対応支援研修」— 4 annual online sessions: Easy Japanese lecture + simulated patient group work. Free for Tokyo medical institution staff. hokeniryo.metro.tokyo.lg.jp.',
+          type: 'info',
+        },
+        {
+          heading: '順天堂大学 (Juntendo University)',
+          content: 'Free video teaching materials: 「外国人診療に役立つやさしい日本語」. Phrase-by-phrase examples for medical staff. Published in partnership with Tokyo Metropolitan Government and Teikyo University.',
+          type: 'info',
+        },
+        {
+          heading: '国際厚生事業団 (JICWELS)',
+          content: 'Free EPA learning materials: nursing knowledge textbooks (Japanese-Indonesian, Japanese-English), national exam preparation guides, kanji study resources. jicwels.or.jp.',
+          type: 'info',
+        },
+        {
+          heading: '公益社団法人 日本介護福祉士会 (JACCW)',
+          content: '「介護の日本語」指導者用手引き — Instructor guide for teaching care Japanese. Includes structured lesson plans. jaccw.or.jp.',
+          type: 'info',
+        },
+      ],
+    },
+    {
+      title_ja: '第11章: 民間研修プログラムとの位置づけ',
+      title_en: 'Chapter 11: How We Compare to Private Programs',
+      sections: [
+        {
+          heading: 'The Training Landscape',
+          content: 'Japan has excellent professional training — but nearly all is paid, institution-only, and Japanese-delivered. Foreign workers on tight budgets or outside the EPA system have few options.',
+          type: 'info',
+        },
+        {
+          heading: 'ニチイ学館 (Nichii Gakuen)',
+          content: 'Medical Clerk Course: ¥37,400, 1-year access, textbooks + videos + online quizzes. Covers: insurance systems, fee calculation, receipt inspection, patient reception manners. Professional certification. e-nichii.net.',
+          type: 'info',
+        },
+        {
+          heading: 'ソラスト (Solasto)',
+          content: 'Foreign Patient Reception Course: ¥50,000, 17 themes × 10min videos, e-learning. Covers: foreign patient characteristics by country, reception cases, advanced hospital examples. Medical clerk + nurse target. solasto-learning.com.',
+          type: 'info',
+        },
+        {
+          heading: '日本医療事務協会 (Japan Medical Affairs Assoc.)',
+          content: 'Inbound Training for Hospitals: Customized language + manners training for medical staff receiving foreign patients. Pricing on request — typically ¥30,000-100,000/group. create-ts.com.',
+          type: 'info',
+        },
+        {
+          heading: 'KipTalk\'s Position',
+          content: 'We are the FREE layer. Workers learn daily communication and basic vocabulary on KipTalk first → then advance to paid professional courses (Nichii, Solasto) if their career path requires certification. KipTalk handles survival Japanese. Professional courses handle certification.',
+          type: 'info',
+        },
+      ],
+    },
+  ],
+};
 
 export const KONBINI_COURSE: IndustryCourse = {
   name_ja: 'コンビニ',
@@ -1078,7 +1283,9 @@ export function getHotelVocabulary() { return HOTEL_COURSE; }
 export function getClinicVocabulary() { return CLINIC_COURSE; }
 export function getRetailVocabulary() { return RETAIL_COURSE; }
 export function getLogisticsVocabulary() { return LOGISTICS_COURSE; }
+export function getNurseVocabulary() { return NURSE_COURSE; }
 export function getMedicalClerkManual() { return MEDICAL_CLERK_MANUAL; }
+export function getMedicalClerkExtended() { return MEDICAL_CLERK_EXTENDED; }
 
 export function getAllVocabulary() {
   return [DAILY_LIFE_COURSE, COMMON_WORKPLACE, CAREGIVING_COURSE,
