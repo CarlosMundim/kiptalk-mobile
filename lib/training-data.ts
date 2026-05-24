@@ -654,22 +654,435 @@ export function getAllReverseCourses(): ReverseCourse[] {
   return [JP_TO_ENGLISH, JP_TO_CHINESE, JP_TO_KOREAN, JP_TO_PORTUGUESE];
 }
 
+export interface TrainingManual {
+  title_ja: string;
+  title_en: string;
+  subtitle: string;
+  icon: string;
+  chapters: TrainingChapter[];
+}
+
+export interface TrainingChapter {
+  title_ja: string;
+  title_en: string;
+  sections: TrainingSection[];
+}
+
+export interface TrainingSection {
+  heading: string;
+  content: string;
+  type: 'info' | 'do' | 'dont' | 'phrase' | 'warning' | 'checklist';
+  jp?: string;
+  target?: string;
+}
+
+// ─── Medical Clerk Training Manual ───
+
+export const MEDICAL_CLERK_MANUAL: TrainingManual = {
+  title_ja: '外国人医療事務スタッフのための実践マニュアル',
+  title_en: 'Medical Clerk Training Manual for Foreign Workers',
+  subtitle: 'Working in a Japanese Clinic with Desk Koda Workstation',
+  icon: '🏥',
+  chapters: [
+    {
+      title_ja: '第1章: 日本の医療機関のしくみ',
+      title_en: 'Chapter 1: How Japanese Clinics Work',
+      sections: [
+        {
+          heading: 'The Japanese Healthcare System at a Glance',
+          content: 'Japan has universal healthcare. Every resident has a health insurance card (保険証). Patients can visit any clinic — no referral needed for most specialties. Clinics are typically small, doctor-owned, with 3-8 staff. You work closely with everyone.',
+          type: 'info',
+        },
+        {
+          heading: 'Types of Medical Facilities',
+          content: 'クリニック (clinic) = small, outpatient only, 1-2 doctors. 病院 (hospital) = larger, inpatient beds, multiple departments. 診療所 = small clinic (legal term). Most foreign medical clerks work in clinics.',
+          type: 'info',
+        },
+        {
+          heading: 'The Daily Flow',
+          content: 'Morning huddle → patient check-in → appointments → examinations → billing → cleaning. Clinics run on precise schedules. 9:00 start means 8:45 ready at your desk. Afternoon break 12:00-15:00 is common. Evening shift runs 15:00-19:00.',
+          type: 'info',
+        },
+      ],
+    },
+    {
+      title_ja: '第2章: 医療事務の基本',
+      title_en: 'Chapter 2: Medical Clerk Fundamentals',
+      sections: [
+        {
+          heading: 'Your Core Responsibilities',
+          content: '1) Reception & patient greeting 2) Insurance card verification 3) Appointment scheduling 4) Medical record preparation 5) Billing & receipt creation (レセプト) 6) Phone handling 7) Cleaning & supply management',
+          type: 'checklist',
+        },
+        {
+          heading: 'Insurance Card (保険証) — The Most Important Document',
+          content: 'Every patient hands you their 保険証. You must: check it\'s valid (not expired), verify the patient name matches, confirm the insurance type (社会保険/国民健康保険/後期高齢者), and return it promptly. Never lose an insurance card.',
+          type: 'warning',
+        },
+        {
+          heading: 'Patient Registration Flow',
+          content: '1) Greet: いらっしゃいませ 2) Ask: 初診ですか？(First visit?) 3) If yes: hand them 問診票 (intake form) 4) Collect: 保険証 5) Verify: name, DOB, address 6) Enter into Desk Koda 7) Direct to waiting area: おかけになってお待ちください',
+          type: 'checklist',
+        },
+        {
+          heading: 'Key Phrases at Reception',
+          content: 'Master these 5 phrases and you can handle 80% of reception:',
+          type: 'phrase', jp: 'いらっしゃいませ', target: 'Welcome (standard clinic greeting)',
+        },
+        {
+          heading: '',
+          content: '',
+          type: 'phrase', jp: '保険証をお預かりします', target: 'I\'ll hold your insurance card',
+        },
+        {
+          heading: '',
+          content: '',
+          type: 'phrase', jp: '少々お待ちください', target: 'Please wait a moment',
+        },
+        {
+          heading: '',
+          content: '',
+          type: 'phrase', jp: 'こちらへどうぞ', target: 'This way please',
+        },
+        {
+          heading: '',
+          content: '',
+          type: 'phrase', jp: 'お大事に', target: 'Take care (said when patient leaves)',
+        },
+      ],
+    },
+    {
+      title_ja: '第3章: Desk Kodaを使った業務',
+      title_en: 'Chapter 3: Working with Desk Koda',
+      sections: [
+        {
+          heading: 'Starting Your Shift',
+          content: '1) Log into Desk Koda 2) Check Today dashboard for: today\'s appointments, pending approvals, system status (ORCA, MyNumber, FAX — all should show green) 3) Review any overnight messages 4) Confirm the 担当 (person in charge) display shows your name',
+          type: 'checklist',
+        },
+        {
+          heading: 'Using the Reception Screen',
+          content: 'The Reception cockpit shows: patient queue, current patient details, insurance verification status, AI-suggested documentation, quick actions. When a patient arrives, click their appointment or create a walk-in entry. The AI assistant (right panel) suggests documents and flags missing information.',
+          type: 'info',
+        },
+        {
+          heading: 'Approvals & Verifier Moat',
+          content: 'Desk Koda\'s safety layer: every AI-generated document must be approved by a human. The Approvals queue shows pending items with risk levels. Green = low risk, yellow = review recommended, red = must review. Never auto-approve red items. This is a legal safety requirement.',
+          type: 'warning',
+        },
+        {
+          heading: 'Japanese Training Panel',
+          content: 'During quiet periods, use the 📖 日本語トレーニング tab. 20 minutes a day = conversational Japanese in 6 months. Focus on the 🏥 Caregiving tab first — it has exactly the vocabulary you need for clinic work.',
+          type: 'do',
+        },
+      ],
+    },
+    {
+      title_ja: '第4章: 患者さんとのコミュニケーション',
+      title_en: 'Chapter 4: Communicating with Patients',
+      sections: [
+        {
+          heading: 'The Patient is 患者様 (kanja-sama)',
+          content: 'Always use 様 (sama) not さん (san) for patients. Always. This is non-negotiable in Japanese healthcare. The patient is always 患者様, never 患者さん. Using さん with a patient signals poor training.',
+          type: 'warning',
+        },
+        {
+          heading: 'Elderly Patients — Special Care',
+          content: 'Many patients are elderly (高齢者). Speak slowly and clearly. Face them when speaking. Use 敬語 (keigo) at all times. Offer physical assistance: お手伝いしましょうか？ If they seem confused about payment or medication, gently explain — never rush them.',
+          type: 'do',
+        },
+        {
+          heading: 'Handling Difficult Situations',
+          content: 'If a patient is upset: 1) Stay calm 2) Apologize for the inconvenience: ご迷惑をおかけして申し訳ございません 3) Listen fully before responding 4) If you can\'t resolve it, say: 少々お待ちください、上司を呼びます (I\'ll call my supervisor) 5) Never argue — call the senior staff',
+          type: 'do',
+        },
+        {
+          heading: 'What Patients Expect from You',
+          content: 'Politeness > speed. Accuracy > efficiency. Cleanliness at all times. Never chew gum, never use your phone, never have visible tattoos (cover them), keep nails short and clean. White coat or clean uniform every day.',
+          type: 'dont',
+        },
+      ],
+    },
+    {
+      title_ja: '第5章: お金と保険のしくみ',
+      title_en: 'Chapter 5: Money, Insurance & Billing',
+      sections: [
+        {
+          heading: 'Japanese Medical Billing — The Basics',
+          content: 'Japan uses a point system (点数). Every medical procedure has a fixed national price in points. 1 point = 10 yen. The patient pays 10-30% depending on age and income. The clinic bills the insurance system for the rest.',
+          type: 'info',
+        },
+        {
+          heading: 'Patient Payment at the Counter',
+          content: '1) Call the patient: [name]様、お会計です 2) Show the amount clearly 3) Take payment 4) Give receipt (領収書) 5) Return insurance card 6) If next appointment needed: 次回の予約はいかがですか？ 7) Close: お大事に',
+          type: 'checklist',
+        },
+        {
+          heading: 'Common Billing Mistakes to Avoid',
+          content: 'Never charge without verifying insurance first. Never give medical advice about costs (say: 医師にご確認ください). Never discuss one patient\'s bill where others can hear. Never round amounts — exact change only.',
+          type: 'warning',
+        },
+        {
+          heading: 'レセプト (Receipt) — The Monthly Claim',
+          content: 'At month-end, clinics submit レセプト (medical fee receipts) to the insurance system. Desk Koda auto-generates draft レセプト from the day\'s records. The Approvals queue will show them for review. Check: patient name, insurance number, procedure codes, point totals.',
+          type: 'info',
+        },
+      ],
+    },
+    {
+      title_ja: '第6章: 職場の人間関係',
+      title_en: 'Chapter 6: Workplace Relationships',
+      sections: [
+        {
+          heading: 'Hierarchy in the Clinic',
+          content: '院長 (clinic director/doctor) → 看護師長 (head nurse) → 看護師 (nurses) → 医療事務 (clerks). As a medical clerk, you report to the head nurse or office manager. The doctor is at the top — always use 先生 (sensei).',
+          type: 'info',
+        },
+        {
+          heading: 'Hōrensō (報連相) in Daily Practice',
+          content: 'Report (報告) — tell your supervisor immediately when: a patient complains, insurance is invalid, the system shows an error, you make a mistake. Inform (連絡) — tell relevant people when: appointments change, supplies are low, you\'ll be absent. Consult (相談) — ask before: changing any procedure, handling unusual payments, speaking to difficult patients.',
+          type: 'do',
+        },
+        {
+          heading: 'Morning Greetings — Critical',
+          content: 'Say おはようございます to EVERY person when you arrive. To the doctor: deeper bow. To colleagues: regular bow. To patients: いらっしゃいませ. This isn\'t optional — skipping greetings is considered rude and unprofessional.',
+          type: 'warning',
+        },
+        {
+          heading: 'Cleaning is Everyone\'s Job',
+          content: 'Japanese clinics have no dedicated cleaners. Everyone cleans — including the doctor. At closing time, you will be expected to: wipe counters, empty trash, clean the waiting area, restock supplies. Join without being asked. This is part of the job.',
+          type: 'do',
+        },
+      ],
+    },
+    {
+      title_ja: '第7章: 緊急時の対応',
+      title_en: 'Chapter 7: Emergency Procedures',
+      sections: [
+        {
+          heading: 'Medical Emergency in the Clinic',
+          content: 'If a patient collapses or shows severe symptoms: 1) Call for the doctor immediately: 先生！緊急です！ 2) If instructed, call 119: 救急車をお願いします。住所は[address]です。 3) Clear the area 4) Stay calm — patients watch your reaction',
+          type: 'checklist',
+        },
+        {
+          heading: 'Fire & Earthquake',
+          content: 'Fire: activate alarm, call 119, guide patients outside. Know your evacuation route and meeting point. Earthquake: 机の下に入って (get under desks), stay away from windows, do not run outside during shaking. After shaking stops, follow senior staff instructions.',
+          type: 'warning',
+        },
+        {
+          heading: 'System Failure',
+          content: 'If Desk Koda or ORCA goes down: 1) Report immediately to supervisor 2) Switch to paper forms (keep blank forms accessible) 3) Continue receiving patients manually 4) Enter data when system recovers. Never turn patients away due to system issues.',
+          type: 'info',
+        },
+      ],
+    },
+  ],
+};
+
+// ─── New Industries: Konbini, Hotels, Clinics, Retail, Logistics ───
+
+export const KONBINI_COURSE: IndustryCourse = {
+  name_ja: 'コンビニ',
+  name_en: 'Convenience Store (Konbini) Japanese',
+  name_pt: 'Japonês para Loja de Conveniência',
+  description: 'Essential Japanese for working at コンビニ — Japan\'s 55,000 convenience stores employ many foreign workers.',
+  icon: '🏪',
+  categories: [
+    {
+      name: 'Cash Register Phrases',
+      vocabulary: [
+        { jp: 'いらっしゃいませ', romaji: 'irasshaimase', en: 'Welcome!', note: 'Say to EVERY customer, always' },
+        { jp: '袋お付けしますか', romaji: 'fukuro o tsukemasu ka', en: 'Would you like a bag?' },
+        { jp: '温めますか', romaji: 'atatamemasu ka', en: 'Shall I heat this?', note: 'For bento, onigiri, fried foods' },
+        { jp: '箸お付けしますか', romaji: 'hashi o tsukemasu ka', en: 'Would you like chopsticks?' },
+        { jp: 'スプーンお付けしますか', romaji: 'supūn o tsukemasu ka', en: 'Would you like a spoon?' },
+        { jp: 'ポイントカードお持ちですか', romaji: 'pointo kādo omochi desu ka', en: 'Do you have a loyalty card?' },
+        { jp: '[amount]円になります', romaji: '[amount] en ni narimasu', en: 'That will be [amount] yen' },
+        { jp: 'ありがとうございました', romaji: 'arigatō gozaimashita', en: 'Thank you very much!', note: 'Say to EVERY customer when they leave' },
+        { jp: 'お釣りです', romaji: 'otsuri desu', en: 'Here is your change' },
+        { jp: 'レジ袋有料です', romaji: 'reji bukuro yūryō desu', en: 'Plastic bags are charged' },
+      ],
+    },
+    {
+      name: 'Store Operations',
+      vocabulary: [
+        { jp: '品出し', romaji: 'shinadashi', en: 'Restocking shelves' },
+        { jp: '前出し', romaji: 'maedashi', en: 'Front-facing (pulling items forward)' },
+        { jp: '廃棄', romaji: 'haiki', en: 'Disposal (expired items)', note: 'Check dates carefully' },
+        { jp: '検品', romaji: 'kenpin', en: 'Inspection of delivered goods' },
+        { jp: 'レジ締め', romaji: 'reji shime', en: 'Closing the register (end of shift)' },
+        { jp: '両替お願いします', romaji: 'ryōgae onegai shimasu', en: 'Please change money (for register)' },
+        { jp: '公共料金', romaji: 'kōkyō ryōkin', en: 'Utility bill payment', note: 'Customers pay bills at konbini' },
+        { jp: '宅急便', romaji: 'takkyūbin', en: 'Courier/delivery service', note: 'Konbini handle parcels too' },
+      ],
+    },
+  ],
+};
+
+export const HOTEL_COURSE: IndustryCourse = {
+  name_ja: 'ホテル・旅館',
+  name_en: 'Hotel & Ryokan Japanese',
+  name_pt: 'Japonês para Hotelaria',
+  description: 'For front desk, housekeeping, and service staff at Japan\'s hotels, ryokan, and minshuku.',
+  icon: '🏨',
+  categories: [
+    {
+      name: 'Front Desk — Check-in',
+      vocabulary: [
+        { jp: 'いらっしゃいませ', romaji: 'irasshaimase', en: 'Welcome' },
+        { jp: 'ご予約のお名前は？', romaji: 'goyoyaku no onamae wa?', en: 'What name is the reservation under?' },
+        { jp: 'パスポートをお預かりします', romaji: 'pasupōto o oazukari shimasu', en: 'I\'ll hold your passport (copy required by law)' },
+        { jp: 'ご宿泊カードにご記入ください', romaji: 'goshukuhaku kādo ni gokinyū kudasai', en: 'Please fill out the guest registration card' },
+        { jp: 'お部屋は[number]号室です', romaji: 'oheya wa [number] gōshitsu desu', en: 'Your room is number [number]' },
+        { jp: 'Wi-Fiのパスワードはこちらです', romaji: 'Wi-Fi no pasuwādo wa kochira desu', en: 'Here is the Wi-Fi password' },
+        { jp: '朝食は7時からです', romaji: 'chōshoku wa shichiji kara desu', en: 'Breakfast is from 7:00' },
+        { jp: 'チェックアウトは11時です', romaji: 'chekkuauto wa jūichiji desu', en: 'Check-out is at 11:00' },
+      ],
+    },
+    {
+      name: 'Housekeeping',
+      vocabulary: [
+        { jp: 'お部屋の清掃に参りました', romaji: 'oheya no seisō ni mairimashita', en: 'I\'ve come to clean your room' },
+        { jp: 'タオル交換', romaji: 'taoru kōkan', en: 'Towel change' },
+        { jp: 'シーツ交換', romaji: 'shītsu kōkan', en: 'Sheet change' },
+        { jp: 'アメニティ', romaji: 'ameniti', en: 'Amenities (toothbrush, razor, etc.)' },
+        { jp: 'ゴミ捨て', romaji: 'gomi sute', en: 'Trash disposal' },
+        { jp: '忘れ物', romaji: 'wasuremono', en: 'Lost item / Forgotten item' },
+      ],
+    },
+    {
+      name: 'Guest Services',
+      vocabulary: [
+        { jp: 'タクシー呼びますか', romaji: 'takushī yobimasu ka', en: 'Shall I call a taxi?' },
+        { jp: 'お荷物お持ちします', romaji: 'onimotsu omochi shimasu', en: 'Let me carry your luggage' },
+        { jp: '近くにコンビニがあります', romaji: 'chikaku ni konbini ga arimasu', en: 'There\'s a convenience store nearby' },
+        { jp: '大浴場は[time]時までです', romaji: 'daiyokujō wa [time] ji made desu', en: 'The public bath is open until [time]' },
+        { jp: 'ごゆっくりどうぞ', romaji: 'goyukkuri dōzo', en: 'Please relax and enjoy your stay' },
+      ],
+    },
+  ],
+};
+
+export const CLINIC_COURSE: IndustryCourse = {
+  name_ja: 'クリニック・病院',
+  name_en: 'Clinic & Hospital Japanese',
+  name_pt: 'Japonês para Clínicas',
+  description: 'Beyond caregiving — vocabulary for clinic reception, pharmacy, and dental staff.',
+  icon: '🏥',
+  categories: [
+    {
+      name: 'Reception Desk',
+      vocabulary: [
+        { jp: '診察券お持ちですか', romaji: 'shinsatsuken omochi desu ka', en: 'Do you have your patient card?' },
+        { jp: '本日はどうなさいましたか', romaji: 'honjitsu wa dō nasaimashita ka', en: 'What brings you in today? (polite)' },
+        { jp: '検温お願いします', romaji: 'kenon onegai shimasu', en: 'Please have your temperature checked' },
+        { jp: '順番にお呼びします', romaji: 'junban ni oyobi shimasu', en: 'We\'ll call you in order' },
+        { jp: '診察の前に問診票を', romaji: 'shinsatsu no mae ni monshinhyō o', en: 'Please fill this intake form before the exam' },
+        { jp: 'お薬手帳お持ちですか', romaji: 'okusuri techō omochi desu ka', en: 'Do you have your medication notebook?' },
+      ],
+    },
+    {
+      name: 'Pharmacy Counter',
+      vocabulary: [
+        { jp: 'お薬出ます', romaji: 'okusuri demasu', en: 'Your medication is ready' },
+        { jp: '食後に飲んでください', romaji: 'shokugo ni nonde kudasai', en: 'Take after meals' },
+        { jp: '1日3回', romaji: 'ichinichi sankai', en: '3 times a day' },
+        { jp: '副作用', romaji: 'fukusayō', en: 'Side effects' },
+        { jp: '飲み合わせ', romaji: 'nomiawase', en: 'Drug interaction check' },
+      ],
+    },
+    {
+      name: 'Dental Clinic',
+      vocabulary: [
+        { jp: '歯科', romaji: 'shika', en: 'Dentistry / Dental clinic' },
+        { jp: '虫歯', romaji: 'mushiba', en: 'Cavity / Tooth decay' },
+        { jp: '歯石除去', romaji: 'shiseki jokyo', en: 'Tartar removal / Scaling' },
+        { jp: 'レントゲン撮ります', romaji: 'rentogen torimasu', en: 'I\'ll take an X-ray' },
+        { jp: '口をゆすいでください', romaji: 'kuchi o yusuide kudasai', en: 'Please rinse your mouth' },
+      ],
+    },
+  ],
+};
+
+export const RETAIL_COURSE: IndustryCourse = {
+  name_ja: '小売・販売',
+  name_en: 'Retail & Sales Japanese',
+  name_pt: 'Japonês para Varejo',
+  description: 'For department stores, boutiques, electronics shops, and general retail.',
+  icon: '🛍️',
+  categories: [
+    {
+      name: 'Customer Service',
+      vocabulary: [
+        { jp: 'いらっしゃいませ', romaji: 'irasshaimase', en: 'Welcome to the store' },
+        { jp: '何かお探しですか', romaji: 'nanika osagashi desu ka', en: 'Are you looking for something?' },
+        { jp: '試着されますか', romaji: 'shichaku saremasu ka', en: 'Would you like to try it on?' },
+        { jp: 'サイズお持ちしましょうか', romaji: 'saizu omochi shimashō ka', en: 'Shall I bring you another size?' },
+        { jp: '少々お待ちください', romaji: 'shōshō omachi kudasai', en: 'Please wait a moment' },
+        { jp: 'こちらでよろしいですか', romaji: 'kochira de yoroshii desu ka', en: 'Is this one alright?' },
+      ],
+    },
+    {
+      name: 'Payment & Returns',
+      vocabulary: [
+        { jp: 'お会計[amount]円です', romaji: 'okaikei [amount] en desu', en: 'Your total is [amount] yen' },
+        { jp: 'クレジットカードお使いになれます', romaji: 'kurejitto kādo otsukai ni naremasu', en: 'You can use credit card' },
+        { jp: '免税手続き', romaji: 'menzei tetsuzuki', en: 'Tax-free procedure', note: 'For tourists spending ¥5,000+' },
+        { jp: '返品・交換', romaji: 'henpin / kōkan', en: 'Return / Exchange' },
+        { jp: '領収書', romaji: 'ryōshūsho', en: 'Receipt', note: 'Different from register receipt' },
+        { jp: '包装お包みします', romaji: 'hōsō otsutsumi shimasu', en: 'I\'ll wrap it for you' },
+      ],
+    },
+  ],
+};
+
+export const LOGISTICS_COURSE: IndustryCourse = {
+  name_ja: '物流・配送',
+  name_en: 'Logistics & Delivery Japanese',
+  name_pt: 'Japonês para Logística',
+  description: 'For warehouse workers, delivery drivers, and logistics staff.',
+  icon: '📦',
+  categories: [
+    {
+      name: 'Warehouse',
+      vocabulary: [
+        { jp: '入庫', romaji: 'nyūko', en: 'Incoming stock / Receiving' },
+        { jp: '出庫', romaji: 'shukko', en: 'Outgoing stock / Shipping' },
+        { jp: '棚卸し', romaji: 'tanaoroshi', en: 'Inventory count' },
+        { jp: 'ピッキング', romaji: 'pikingu', en: 'Picking (selecting items for orders)' },
+        { jp: 'フォークリフト', romaji: 'fōkurifuto', en: 'Forklift' },
+        { jp: '注意：頭上注意', romaji: 'chūi: zujō chūi', en: 'Caution: Watch your head' },
+      ],
+    },
+    {
+      name: 'Delivery',
+      vocabulary: [
+        { jp: 'お届け物です', romaji: 'otodokemono desu', en: 'I have a delivery for you' },
+        { jp: 'サインお願いします', romaji: 'sain onegai shimasu', en: 'Please sign here' },
+        { jp: '不在票', romaji: 'fuzaihyō', en: 'Missed delivery notice', note: 'You\'ll leave many of these' },
+        { jp: '再配達', romaji: 'saihaitatsu', en: 'Re-delivery' },
+        { jp: '置き配', romaji: 'okihai', en: 'Leave-at-door delivery' },
+        { jp: '着払い', romaji: 'chakubarai', en: 'Cash on delivery (COD)' },
+      ],
+    },
+  ],
+};
+
 // ─── Export helpers ───
 
-export function getDailyLifeVocabulary() {
-  return DAILY_LIFE_COURSE;
-}
-
-export function getCaregivingVocabulary() {
-  return CAREGIVING_COURSE;
-}
-
-export function getCommonWorkplace() {
-  return COMMON_WORKPLACE;
-}
+export function getDailyLifeVocabulary() { return DAILY_LIFE_COURSE; }
+export function getCaregivingVocabulary() { return CAREGIVING_COURSE; }
+export function getCommonWorkplace() { return COMMON_WORKPLACE; }
+export function getKonbiniVocabulary() { return KONBINI_COURSE; }
+export function getHotelVocabulary() { return HOTEL_COURSE; }
+export function getClinicVocabulary() { return CLINIC_COURSE; }
+export function getRetailVocabulary() { return RETAIL_COURSE; }
+export function getLogisticsVocabulary() { return LOGISTICS_COURSE; }
+export function getMedicalClerkManual() { return MEDICAL_CLERK_MANUAL; }
 
 export function getAllVocabulary() {
-  return [DAILY_LIFE_COURSE, COMMON_WORKPLACE, CAREGIVING_COURSE];
+  return [DAILY_LIFE_COURSE, COMMON_WORKPLACE, CAREGIVING_COURSE,
+    KONBINI_COURSE, HOTEL_COURSE, CLINIC_COURSE, RETAIL_COURSE, LOGISTICS_COURSE];
 }
 
 export function getAllCultureModules() {
